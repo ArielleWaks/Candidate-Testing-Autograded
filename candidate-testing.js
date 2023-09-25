@@ -12,13 +12,15 @@ let candidateAnswer = "";
 
 
 //TODO: Variables for Part 2
-let questions = ["Who was the first American woman in space? ", 
+let questions = [
+  "Who was the first American woman in space? ", 
   "True or false: 5 kilometer == 5000 meters? ", 
   "(5 + 3)/2 * 10 = ? ", 
   "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", 
-  "What is the minimum crew size for the ISS? "];
+  "What is the minimum crew size for the ISS? "
+];
 let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
-let candidateAnswers = "";
+let candidateAnswers = [];
 
 
 function askForName() {
@@ -28,21 +30,32 @@ function askForName() {
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  candidateAnswer = input.question(question);
+  for (let i = 0; i < questions.length; i++) {
+    let candidateAnswerI = input.question(questions[i]);
+    candidateAnswers.push(candidateAnswerI);
+  }
 
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  if (candidateAnswer === "Sally Ride") {
-    console.log("Correct!");
-  } else {
-    console.log("Incorrect: Sally Ride was the first American Woman in space.");
+  let candidateCorrectAnswers = 0;
+  for (let i = 0; i < correctAnswers.length; i++) {
+    if (correctAnswers[i] === candidateAnswers[i]) {
+      candidateCorrectAnswers += 1;
+    }
+    console.log(`Your Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}`);
   }
 
+  let status = '';
+  if (candidateCorrectAnswers/correctAnswers.length >= 0.8) {
+    status = 'PASSED';
+  } else {
+    status = 'FAILED';
+  }
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+  let grade = `Overall Grade: ${candidateCorrectAnswers*20}% (${candidateCorrectAnswers} of ${correctAnswers.length} responses correct)\nStatus: ${status}` //TODO 3.2 use this variable to calculate the candidates score.
 
 
   return grade;
