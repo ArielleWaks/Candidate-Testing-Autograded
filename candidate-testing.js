@@ -45,7 +45,7 @@ function gradeQuiz(candidateAnswers) {
     if (correctAnswers[i].toLowerCase() === candidateAnswers[i].toLowerCase()) {
       candidateScore += 1;
     }
-    console.log(`Question ${i})\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}`);
+    console.log(`\nQuestion ${i+1})\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}`);
   }
 
   let status = '';
@@ -56,7 +56,7 @@ function gradeQuiz(candidateAnswers) {
   }
 
   let grade = candidateScore / correctAnswers.length * 100
-  console.log(`Overall Grade: ${grade}% (${candidateScore} of ${correctAnswers.length} responses correct)\nStatus: ${status}`);
+  console.log(`\nOverall Grade: ${grade}% (${candidateScore} of ${correctAnswers.length} responses correct)\nStatus: ${status}`);
 
   return grade;
 }
