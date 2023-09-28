@@ -40,6 +40,7 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+  console.log(`\nCandidate Name: ${candidateName}\nTest Overview:`)
   let candidateScore = 0;
   for (let i = 0; i < correctAnswers.length; i++) {
     if (correctAnswers[i].toLowerCase() === candidateAnswers[i].toLowerCase()) {
@@ -56,7 +57,7 @@ function gradeQuiz(candidateAnswers) {
   }
 
   let grade = candidateScore / correctAnswers.length * 100
-  console.log(`\nOverall Grade: ${grade}% (${candidateScore} of ${correctAnswers.length} responses correct)\nStatus: ${status}`);
+  console.log(`\nOverall Grade: ${grade}% (${candidateScore} of ${correctAnswers.length} responses correct)\n>>> Status: ${status} <<<`);
 
   return grade;
 }
